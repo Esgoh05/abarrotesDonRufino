@@ -16,6 +16,7 @@ exports.up = function(knex) {
                 table.text("address").notNullable();
                 table.integer("zip").notNullable();
                 table.string("province").notNullable();
+                table.boolean('active').notNullable().defaultTo(true);
                 table.timestamp("created_at").defaultTo(knex.fn.now());
 
             })

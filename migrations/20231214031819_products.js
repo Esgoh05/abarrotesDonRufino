@@ -13,6 +13,7 @@ exports.up = function(knex, promise) {
                 table.text("description");
                 table.decimal("cost", 12, 0).notNullable();
                 table.string("sku").notNullable();
+                table.boolean('active').notNullable().defaultTo(true);
                 table.timestamp("created_at").defaultTo(knex.fn.now());
 
             })

@@ -15,6 +15,7 @@ exports.up = function(knex) {
                 table.date("sales_date").notNullable();
                 table.integer("quantity_product").notNullable();
                 table.decimal("sales_price", 12, 2).notNullable();
+                table.boolean('active').notNullable().defaultTo(true);
                 table.timestamp("created_at").defaultTo(knex.fn.now());
 
             })
