@@ -15,8 +15,36 @@ const findAllProducts = () => {
     .from('products')
     .where({active: true})
 }
+
+const updateProduct = (productId, bodyToUpdate) => {
+    return knex
+    .update(bodyToUpdate)
+    .from('products')
+    .where({'product_id': productId})
+    .returning('*')
+}
+
+const costUpdateProduct = (productId, cost) => {
+    return knex
+    .update(cost)
+    .from('products')
+     .where({'product_id': productId})
+     .returning('*')
+     
+}
+
+const destroyProduct = (productId) => {
+    return knex
+    .del()
+    .from('products')
+    .where({product_id: productId})
+}
+
 module.exports= {
     create,
     findOneProduct,
-    findAllProducts
+    findAllProducts,
+    updateProduct,
+    costUpdateProduct,
+    destroyProduct
 }
